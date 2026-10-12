@@ -13,8 +13,8 @@ Description: Implements tuning-free two-sample tests of whether treatment and
     pointwise studentization, and optional fixed-basis covariate adjustment.
     Kolmogorov--Smirnov and Cramer--von Mises statistics are computed jointly.
 License: MIT + file LICENSE
-URL: https://github.com/HaokunLu/embt
-BugReports: https://github.com/HaokunLu/embt/issues
+URL: https://github.com/HaokunLU722/embt
+BugReports: https://github.com/HaokunLU722/embt/issues
 Encoding: UTF-8
 R: >= 4.1.0
 Imports:

@@ -17,7 +17,7 @@ The private development version can be installed from GitHub by authorized
 users:
 
 ```r
-remotes::install_github("HaokunLu/embt")
+remotes::install_github("HaokunLU722/embt")
 ```
 
 ## Basic use
@@ -65,4 +65,3 @@ plot(fit, band = TRUE)
 ```
 
 The confidence band is based on the raw KS multiplier statistic.
-
