@@ -1,0 +1,30 @@
+Package: embt
+Title: Expectile Multiplier Bootstrap Tests for Treatment Effect Heterogeneity
+Version: 0.1.0.9000
+Authors@R: c(
+    person("Haokun", "Lu", email = "hklu25@stu.pku.edu.cn",
+           role = c("aut", "cre")),
+    person("Xiaojun", "Song", email = "sxj@gsm.pku.edu.cn",
+           role = "aut")
+  )
+Description: Implements tuning-free two-sample tests of whether treatment and
+    control outcome distributions differ only by a location shift. The tests
+    use centered expectile processes, Mammen multiplier calibration, optional
+    pointwise studentization, and optional fixed-basis covariate adjustment.
+    Kolmogorov--Smirnov and Cramer--von Mises statistics are computed jointly.
+License: MIT + file LICENSE
+URL: https://github.com/HaokunLu/embt
+BugReports: https://github.com/HaokunLu/embt/issues
+Encoding: UTF-8
+R: >= 4.1.0
+Imports:
+    graphics,
+    stats
+Suggests:
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+Config/testthat/edition: 3
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3

@@ -1,0 +1,76 @@
+---
+title: "Getting started with embt"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting started with embt}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+The `embt` package tests whether two outcome distributions differ only by a
+location shift. The null can be written as constancy of the expectile treatment
+effect over a prespecified range of expectile indices.
+
+## A two-sample test
+
+The treatment variable must be binary. Numeric treatment variables use zero
+for control and one for treatment. For factors, the first level is control and
+the second level is treatment.
+
+```{r}
+library(embt)
+
+set.seed(2026)
+n <- 120
+experiment <- data.frame(
+  treatment = rep(0:1, each = n / 2),
+  baseline = rnorm(n)
+)
+experiment$outcome <- 1 + experiment$treatment +
+  (1 + 0.25 * experiment$treatment) * rnorm(n) +
+  0.5 * experiment$baseline
+
+set.seed(11)
+fit <- embt(outcome ~ treatment, data = experiment, B = 99)
+summary(fit)
+```
+
+The summary reports four tests. `S-KS` and `S-CvM` use the regular-process
+studentization that remains well defined at the mean coordinate.
+
+## Fixed-basis covariate adjustment
+
+```{r}
+set.seed(11)
+fit_ca <- embt(
+  outcome ~ treatment,
+  data = experiment,
+  adjust = ~ baseline,
+  B = 99
+)
+summary(fit_ca)
+```
+
+Covariates must be measured before treatment assignment, and the adjustment
+basis should be prespecified. The basis dimension is fixed; the procedure does
+not select a bandwidth or fit a nonparametric nuisance function.
+
+## Process estimates
+
+The estimated centered expectile treatment-effect curve is available in the
+`process` component and can be plotted directly.
+
+```{r, fig.width=6, fig.height=4}
+plot(fit_ca, version = "both")
+```
+
+A raw KS simultaneous confidence band can be requested with:
+
+```{r}
+head(confint(fit_ca, parm = "adjusted"))
+```
+
