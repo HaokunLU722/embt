@@ -11,8 +11,7 @@ score functions.
 
 ## Installation
 
-The private development version can be installed from GitHub by
-authorized users:
+The development version can be installed directly from GitHub:
 
 ``` r
 remotes::install_github("HaokunLU722/embt")
